@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traders Paradise Investment</title>
+    <style>
+        :root {
+            --gold: #ffd700;
+            --dark-blue: #0a192f;
+            --white: #ffffff;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-blue);
+            color: var(--white);
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        header { margin-bottom: 40px; }
+        h1 { color: var(--gold); font-size: 2.5rem; margin-bottom: 5px; }
+        p.tagline { font-style: italic; opacity: 0.8; }
+
+        /* Investment Cards */
+        .plans-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--gold);
+            padding: 20px;
+            border-radius: 15px;
+            width: 250px;
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.15); }
+        .card h3 { margin: 10px 0; }
+        .amount { font-size: 1.5rem; font-weight: bold; }
+        .profit { color: #00ff00; display: block; margin: 10px 0; }
+        
+        button {
+            background-color: var(--gold);
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover { background-color: #e6c200; }
+
+        /* Payment Section */
+        #payment-section {
+            display: none;
+            margin-top: 50px;
+            background: #fff;
+            color: #000;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #qr-image { width: 200px; height: 200px; margin-bottom: 20px; border: 2px solid #333; }
+        
+        input[type="file"] { margin: 20px 0; }
+
+        /* Final Contact Section */
+        #contact-section {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: #25d366;
+            color: white;
+            border-radius: 10px;
+            font-size: 1.2rem;
+        }
+        a { color: white; text-decoration: underline; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>TRADERS PARADISE INVESTMENT</h1>
+        <p class="tagline">Smart Investments, Guaranteed Returns</p>
+    </header>
+
+    <div class="plans-container">
+        <div class="card">
+            <h3>Plan Silver</h3>
+            <div class="amount">₹3,000</div>
+            <span class="profit">Return: ₹20,000+</span>
+            <button onclick="showPayment('Silver', 3000)">Select Plan</button>
+        </div>
+        <div class="card">
+            <h3>Plan Gold</h3>
+            <div class="amount">₹5,000</div>
+            <span class="profit">Return: ₹35,000</span>
+            <button onclick="showPayment('Gold', 5000)">Select Plan</button>
+        </div>
+        <div class="card">
+            <h3>Plan Gold</h3>
+            <div class="amount">₹10,000</div>
+            <span class="profit">Return: ₹50,000</span>
+            <button onclick="showPayment('Gold', 5000)">Select Plan</button>
+        </div>
+        <div class="card">
+            <h3>Plan Gold</h3>
+            <div class="amount">₹20,000</div>
+            <span class="profit">Return: ₹1,00,000</span>
+            <button onclick="showPayment('Gold', 5000)">Select Plan</button>
+        </div>
+        <div class="card">
+            <h3>Plan Diamond</h3>
+            <div class="amount">₹50,000</div>
+            <span class="profit">Return: ₹2,50,000</span>
+            <button onclick="showPayment('Diamond', 10000)">Select Plan</button>
+        </div>
+    </div>
+
+    <div id="payment-section">
+        <h2 id="selected-plan-name">Complete Your Payment</h2>
+        <img src="<a href="https://ibb.co/0jJYqPzT"><img src="https://i.ibb.co/0jJYqPzT/Whats-App-Image-2026-04-27-at-1-44-56-PM.jpg" alt="Whats-App-Image-2026-04-27-at-1-44-56-PM" border="0"></a>" id="qr-image" alt="QR Code">
+        <p>Scan the QR code to pay <strong id="pay-amount"></strong></p>
+        
+        <hr>
+        <p>Upload Payment Screenshot:</p>
+        <input type="file" id="screenshot-input" accept="image/*" onchange="handleUpload()">
+        
+        <div id="contact-section">
+            ✅ Screenshot Received! <br>
+            Contact us on WhatsApp: <br>
+            <a href="https://wa.me/918949368853" target="_blank">+91 XXXXX XXXXX</a>
+        </div>
+    </div>
+
+    <script>
+        function showPayment(name, amount) {
+            document.getElementById('payment-section').style.display = 'block';
+            document.getElementById('selected-plan-name').innerText = "Pay for " + name + " Plan";
+            document.getElementById('pay-amount').innerText = "₹" + amount;
+            // Smooth scroll to payment section
+            window.scrollTo({ top: document.getElementById('payment-section').offsetTop, behavior: 'smooth' });
+        }
+
+        function handleUpload() {
+            const fileInput = document.getElementById('screenshot-input');
+            if (fileInput.files.length > 0) {
+                // Show WhatsApp section after file is selected
+                document.getElementById('contact-section').style.display = 'block';
+                alert("Screenshot uploaded successfully! Please contact on WhatsApp.");
+            }
+        }
+    </script>
+
+</body>
+</html>
